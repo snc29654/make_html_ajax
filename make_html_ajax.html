@@ -19,6 +19,23 @@
       });
       return false;
     });
+    $('#read').click(function() {
+      var data = {'request' : $('#request').val()};
+      $.ajax({
+        type: "POST",
+        url: "read.php",
+        data: data,
+      }).success(function(data, dataType) {
+	document.getElementById( "request" ).value = data ;
+
+
+      }).error(function(XMLHttpRequest, textStatus, errorThrown) {
+        alert('Error : ' + errorThrown);
+      });
+      return false;
+    });
+
+
   });
   </script>
 </head>
@@ -27,8 +44,9 @@
   <a href="html_file.html" target="_blank">htmlを開く</a>
 
   <form method="post">
-    <p><textarea id="request" cols="80" rows="30">ここにhtmlを記述してください</textarea></p>
+    <p><textarea name="request" id="request" cols="80" rows="30">ここにhtmlを記述してください</textarea></p>
     <p><input id="send" value="書き込み" type="submit" /></p>
+    <p><input id="read" value="現在の値を読み出し" type="submit" /></p>
   </form>
 </body>
 </html>
