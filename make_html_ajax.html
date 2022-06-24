@@ -7,7 +7,11 @@
   <script>
   $(document).ready(function() {
     $('#send').click(function() {
-      var data = {'request' : $('#request').val()};
+      var data = {
+        'request' : $('#request').val(),
+        'action' : $('#action').val(),
+    
+    };
       $.ajax({
         type: "POST",
         url: "send.php",
@@ -20,13 +24,17 @@
       return false;
     });
     $('#read').click(function() {
-      var data = {'request' : $('#request').val()};
+      var data = {
+        'request' : $('#request').val(),
+        'action' : $('#action').val(),
+    
+    };
       $.ajax({
         type: "POST",
         url: "read.php",
         data: data,
       }).success(function(data, dataType) {
-	document.getElementById( "request" ).value = data ;
+	       document.getElementById( "request" ).value = data ;
 
 
       }).error(function(XMLHttpRequest, textStatus, errorThrown) {
@@ -41,12 +49,22 @@
 </head>
 <body>
   <h1>HTMLを実験する</h1>
-  <a href="html_file.html" target="_blank">htmlを開く</a>
+  <a href="html_file0.html" target="_blank">パターン0 htmlを開く</a><br>
+  <a href="html_file1.html" target="_blank">パターン1 htmlを開く</a><br>
+  <a href="html_file2.html" target="_blank">パターン2 htmlを開く</a><br>
+  <a href="html_file3.html" target="_blank">パターン3 htmlを開く</a><br>
 
   <form method="post">
     <p><textarea name="request" id="request" cols="80" rows="30">ここにhtmlを記述してください</textarea></p>
     <p><input id="send" value="書き込み" type="submit" /></p>
     <p><input id="read" value="現在の値を読み出し" type="submit" /></p>
+    <p><select name="action" id="action">
+      <option value="0">パターン0</option>
+      <option value="1">パターン1</option>
+      <option value="2">パターン2</option>
+      <option value="3">パターン3</option>
+      </select></p>
+  
   </form>
 </body>
 </html>
