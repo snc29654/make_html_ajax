@@ -49,10 +49,7 @@
 </head>
 <body>
   <h1>HTMLを実験する</h1>
-  <a href="html_file0.html" target="_blank">パターン0 htmlを開く</a><br>
-  <a href="html_file1.html" target="_blank">パターン1 htmlを開く</a><br>
-  <a href="html_file2.html" target="_blank">パターン2 htmlを開く</a><br>
-  <a href="html_file3.html" target="_blank">パターン3 htmlを開く</a><br>
+  <a id="link0" href="html_file0.html" target="_blank">htmlを開く</a><br>
 
   <form method="post">
     <p><textarea name="request" id="request" cols="80" rows="30">ここにhtmlを記述してください</textarea></p>
@@ -64,7 +61,24 @@
       <option value="2">パターン2</option>
       <option value="3">パターン3</option>
       </select></p>
-  
+      <script>
+        document.getElementById("action").addEventListener("change", function(){
+
+            var age_elem = document.getElementById("action");
+
+            var s_value = age_elem.options[age_elem.selectedIndex].value;
+
+            console.log(s_value);
+            const target = document.getElementById("link0");
+            if(s_value=="0")target.href = "html_file0.html";
+            if(s_value=="1")target.href = "html_file1.html";
+            if(s_value=="2")target.href = "html_file2.html";
+            if(s_value=="3")target.href = "html_file3.html";
+
+      }, false);
+
+      </script>
+
   </form>
 </body>
 </html>
